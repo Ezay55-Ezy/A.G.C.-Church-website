@@ -85,9 +85,12 @@
         }
 
         nav img {
-            width: 120px;
+            width: clamp(64px, 9vw, 140px);
             height: auto;
+            max-height: 84px;
             border-radius: 8px;
+            object-fit: contain;
+            display: block;
         }
 
         .logo {
@@ -474,6 +477,69 @@
             align-items: stretch;
         }
 
+        /* Slideshow preview above the gallery */
+
+        .gallery-slideshow {
+            width: 100%;
+            height: 360px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            background: #000;
+        }
+
+        .slideshow-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(.22,.9,.3,1);
+            will-change: transform;
+        }
+
+        .slideshow-slide {
+            min-width: 100%;
+            height: 100%;
+            flex: 0 0 100%;
+            display: block;
+        }
+
+        .slideshow-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slideshow-prev, .slideshow-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.45);
+            color: #fff;
+            border: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 30;
+        }
+
+        .slideshow-prev { left: 12px; }
+        .slideshow-next { right: 12px; }
+
+        /* hide the thumbnail grid beneath the slideshow as requested */
+        .gallery-grid { display: none !important; }
+
+        @media (min-width: 900px) {
+            .gallery-slideshow { height: 480px; }
+        }
+
+
         .gallery-grid .gallery-item {
             width: 100%;
             height: 160px;
@@ -647,7 +713,8 @@
             }
 
             nav img {
-                width: 80px;
+                /* let clamp handle sizing on small screens; ensure it doesn't exceed nav height */
+                max-height: 64px;
             }
 
             .logo {
@@ -747,3 +814,176 @@
                 height: 180px;
             }
         }
+
+/* Events & Livestreams styles */
+.events-section .events-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.event-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-left: 6px solid #360d64;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 40px rgba(54,13,100,0.16);
+}
+
+.event-date {
+    font-weight: 700;
+    color: #360d64;
+    background: linear-gradient(90deg, rgba(54,13,100,0.06), rgba(74,21,128,0.04));
+    padding: 6px 10px;
+    border-radius: 999px;
+    display: inline-block;
+    font-size: 0.95rem;
+}
+
+.event-title {
+    font-size: 1.15rem;
+    color: #0b0b0b;
+    margin-top: 0.2rem;
+}
+
+.event-desc {
+    color: #222;
+    font-size: 0.98rem;
+    line-height: 1.5;
+    flex: 1 1 auto;
+}
+
+.event-actions {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.btn-join {
+    background: #FF0000;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    gap: 0.6rem;
+    align-items: center;
+    border: 0;
+}
+
+.btn-join:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(255,0,0,0.18);
+}
+
+.events-sidebar {
+    background: white;
+    padding: 1.6rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #fff 0%, #f2f2f2 100%);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.social-icon svg { display: block; }
+
+.social-icon:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+
+@media (max-width: 900px) {
+    .events-section .events-layout { grid-template-columns: 1fr; }
+    .events-sidebar { order: 2; }
+}
+
+/* Livestreams platform cards */
+.livestreams-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.platform-card {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.9rem;
+    border-radius: 10px;
+    border: 1px solid rgba(54,13,100,0.06);
+    background: linear-gradient(180deg, #fff 0%, #fbf8ff 100%);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.platform-card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(54,13,100,0.08); }
+
+.platform-icon {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.platform-meta {
+    flex: 1 1 auto;
+}
+
+.platform-meta h4 { margin: 0 0 4px 0; font-size: 1.05rem; color: #120717; }
+.platform-meta p { margin: 0; font-size: 0.95rem; color: #333; }
+
+.platform-actions { display: flex; gap: 0.6rem; align-items: center; }
+.platform-actions .btn-join { padding: 8px 12px; font-size: 0.95rem; }
+
+/* Make tap targets larger on small screens */
+@media (max-width: 480px) {
+    .platform-card { padding: 1rem; }
+    .platform-icon { width: 64px; height: 64px; min-width: 64px; font-size: 1.75rem; }
+    .platform-actions .btn-join { padding: 12px 16px; }
+}
+
+/* Distinct background for events section */
+.events-section {
+    background: linear-gradient(180deg, #fbf7ff 0%, #ffffff 100%);
+    border: 1px solid rgba(54,13,100,0.06);
+    border-radius: 12px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
