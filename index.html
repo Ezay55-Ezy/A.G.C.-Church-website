@@ -8,6 +8,7 @@
     <title>AFRICA GOSPEL CHURCH-LALWET</title>
     <link rel="icon" href="Gallery/AGC-logo-1-2.png" type="image/x-icon">
     <link rel="stylesheet" href="main.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pbVj3Y6q0bYl0Ykz6q3Gq8XQm9z2I1k9Qf0e6b1J7l3Pq9Kf4V6Y5q3V7s1Z8p2H3l0Yz6q3Gq8XQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header>
@@ -21,6 +22,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#ministries">Ministries</a></li>
+                <li><a href="#events">Events</a></li>
                 <li><a href="#gallery">Gallery</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -37,11 +39,17 @@
 
     <section id="gallery" class="container gallery-section">
         <h2 class="section-title">Gallery</h2>
+        <div class="gallery-slideshow" aria-hidden="false">
+            <div class="slideshow-track" aria-live="off"></div>
+            <button class="slideshow-prev" aria-label="Previous slide">‹</button>
+            <button class="slideshow-next" aria-label="Next slide">›</button>
+        </div>
+
         <div class="gallery-grid">
+            <img class="gallery-item" src="Gallery/IMG-20251226-WA0001.jpg" alt="Pastor Kennedy Soy" loading="lazy">
             <img class="gallery-item" src="Gallery/Image 1.jpg" alt="Exterior view of Africa Gospel Church Lalwet" loading="lazy">
             <img class="gallery-item" src="Gallery/IMG-20250730-WA0112.jpg" alt="Congregation during a Sunday service at AGC Lalwet" loading="lazy">
             <img class="gallery-item" src="Gallery/IMG-20250923-WA0035.jpg" alt="Worship team leading praise and worship" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20251202-WA0029.jpg" alt="Children's ministry activity" loading="lazy">
             <img class="gallery-item" src="Gallery/IMG-20251218-WA0058.jpg" alt="congregation" loading="lazy">
             <img class="gallery-item" src="Gallery/IMG-20251218-WA0067.jpg" alt="church worshipers" loading="lazy">
         </div>
@@ -157,6 +165,27 @@
                 <h3>Home Bible Study</h3>
                 <p>Connect with others in intimate Bible study and fellowship groups that meet throughout the week in various locations.</p>
             </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events & Livestreams -->
+    <section id="events" class="events-section container">
+        <h2 class="section-title">Upcoming Events &amp; Livestreams</h2>
+        <div class="events-layout">
+            <div class="events-grid" aria-live="polite">
+                <!-- Event cards will be injected here by script.js -->
+            </div>
+
+            <aside class="events-sidebar">
+                <div class="live-intro">
+                    <h3>Join Our Live Streams</h3>
+                    <p>Follow our channels for sermons, prayer meetings, and updates.</p>
+                </div>
+
+                <div class="livestreams-grid" aria-label="Livestream platforms">
+                    <!-- Platform cards injected by script.js -->
+                </div>
+            </aside>
         </div>
     </section>
 
