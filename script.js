@@ -140,13 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         date: `${getNextOccurrence(4)} • 4:00 PM`,  // 4 = Thursday
         title: 'Midweek Prayer & Bible Study',
-        desc: 'A focused time of prayer and Bible study for all — available via our livestream on YouTube.'
+        desc: 'A focused time of prayer and Bible study for all.' 
       },
       {
         date: `${getNextOccurrence(6)} • 3:00 PM`,  // 6 = Saturday
         title: 'Youth Fellowship',
-        desc: 'Youth worship and teaching. Highlights posted to TikTok and Facebook; select sessions streamed.'
-      },
+        desc: 'Youth worship and teaching. In-person at AGC Lalwet.'},
       {
         date: `${getNextOccurrence(0)} • 10:00 AM`, // 0 = Sunday
         title: 'Sunday Morning Service',
