@@ -1352,7 +1352,6 @@ footer {
     .logo {
         font-size: 1rem;
         flex: none;
-        flex-grow: 1;
         text-align: left;
         min-width: 0;
         overflow: hidden;
@@ -1367,7 +1366,7 @@ footer {
 
     nav ul {
         display: none;
-        position: fixed;
+        position: absolute;
         top: 70px;
         right: 0;
         width: 100%;
@@ -1377,7 +1376,7 @@ footer {
         padding: 1.5rem 1rem;
         border-radius: 0;
         box-shadow: var(--shadow-lg);
-        z-index: 500;
+        z-index: 200;
         box-sizing: border-box;
         gap: 0.5rem;
     }
