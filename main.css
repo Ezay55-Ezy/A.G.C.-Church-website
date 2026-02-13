@@ -1443,7 +1443,6 @@ footer {
     .logo {
         font-size: 0.85rem;
         flex: none;
-        flex-grow: 1;
         min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
