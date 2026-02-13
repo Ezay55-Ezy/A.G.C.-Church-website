@@ -9,8 +9,17 @@
     <link rel="icon" href="Gallery/AGC-logo-1-2.png" type="image/x-icon">
     <link rel="stylesheet" href="main.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pbVj3Y6q0bYl0Ykz6q3Gq8XQm9z2I1k9Qf0e6b1J7l3Pq9Kf4V6Y5q3V7s1Z8p2H3l0Yz6q3Gq8XQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Floating Elements Background -->
+    <div class="floating-shapes" aria-hidden="true">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
     <header>
         <nav>
             <img src="Gallery/AGC-logo-1-2.png" alt="AGC logo" loading="lazy">
@@ -30,10 +39,14 @@
     </header>
 
     <section id="home" class="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Welcome to A.G.C. LALWET</h1>
-            <p>A place of faith, hope, and community</p>
-            <a href="#contact" class="btn">Visit Us</a>
+            <h1 class="hero-title">Welcome to A.G.C. LALWET</h1>
+            <p class="hero-subtitle">A place of faith, hope, and community</p>
+            <a href="#contact" class="btn btn-primary">Visit Us</a>
+        </div>
+        <div class="scroll-indicator">
+            <span></span>
         </div>
     </section>
 
@@ -46,13 +59,18 @@
         </div>
 
         <div class="gallery-grid">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0009.jpg" alt="Church gathering" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0011.jpg" alt="Community event" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0012.jpg" alt="Worship service" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0021.jpg" alt="Church activity" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0022 (1).jpg" alt="Fellowship moment" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0022.jpg" alt="Church celebration" loading="lazy">
-            <img class="gallery-item" src="Gallery/IMG-20260110-WA0027.jpg" alt="Spiritual gathering" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0018.jpg" alt="Church gathering" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0019.jpg" alt="Community event" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0021.jpg" alt="Worship service" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0022.jpg" alt="Church activity" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0072.jpg" alt="Fellowship moment" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0073.jpg" alt="Church celebration" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0089.jpg" alt="Spiritual gathering" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0096.jpg" alt="Community service" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0106.jpg" alt="Prayer time" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0109.jpg" alt="Church members" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0114.jpg" alt="Worship moment" loading="lazy">
+            <img class="gallery-item" src="Gallery/IMG-20260209-WA0115.jpg" alt="Fellowship gathering" loading="lazy">
         </div>
 
         <!-- Lightbox modal -->
@@ -70,22 +88,26 @@
         <h2 class="section-title">Service Times</h2>
         <div class="times-grid">
             <div class="time-card">
+                <div class="time-icon">🌅</div>
                 <h3>Sunday Morning</h3>
                 <p>8:00 AM - Bible Study</p>
                 <p>10:00 AM - Main Service</p>
             </div>
             <div class="time-card">
+                <div class="time-icon">📖</div>
                 <h3>Thursday Fellowship</h3>
                 <p>4:00 PM - Bible Study</p>
                 <p>All are welcome</p>
             </div>
             <div class="time-card">
+                <div class="time-icon">🙌</div>
                 <h3>Saturday Youth</h3>
                 <p>3:00 PM - Youth Fellowship</p>
                 <p>Let us come together and Praise the Lord</p>
             </div>
         </div>
     </section>
+
     <section id="about" class="container">
         <h2 class="section-title">About Us</h2>
         <div class="about-section">
@@ -117,17 +139,20 @@
         <h2 class="section-title">Our Vision & Mission</h2>
         
         <div class="vision-box">
+            <div class="vision-icon">👁️</div>
             <h3>Our Vision</h3>
             <p>The Whole Church taking the Whole Gospel to the Whole World.</p>
             <p class="swahili">(KANISA LOTE, likieneza INJILI YOTE, ULIMWENGUNI KOTE)</p>
         </div>
 
         <div class="mission-box">
+            <div class="mission-icon">🎯</div>
             <h3>Mission</h3>
             <p>The purpose of the Africa Gospel Church is to fulfill the Great Commandment and Great Commission of the Lord Jesus Christ according to the Great Plan.</p>
         </div>
 
         <div class="strategies-box">
+            <div class="strategies-icon">⭐</div>
             <h3>Our Five Strategies</h3>
             <ul class="strategies-list">
                 <li><strong>E1:</strong> Evangelizing the Unsaved</li>
@@ -143,26 +168,32 @@
         <h2 class="section-title">Our Ministries</h2>
         <div class="ministries-grid">
             <div class="ministry-card">
+                <div class="ministry-icon">👶</div>
                 <h3>Children's Ministry</h3>
                 <p>Nurturing faith in our youngest members through engaging lessons, activities, and loving care. Available during all Sunday services.</p>
             </div>
             <div class="ministry-card">
+                <div class="ministry-icon">🌟</div>
                 <h3>Youth Ministry</h3>
                 <p>Empowering the next generation by providing a safe and exciting space for spiritual growth, where strong bonds are formed through mentorship and God's Word.</p>
             </div>
             <div class="ministry-card">
+                <div class="ministry-icon">💝</div>
                 <h3>Women's Ministry</h3>
                 <p>A community dedicated to equipping women to reach their full potential, emphasizing spiritual support, shared faith, and practical application of scripture.</p>
             </div>
             <div class="ministry-card">
+                <div class="ministry-icon">🎵</div>
                 <h3>Worship Team</h3>
                 <p>Leading our congregation in heartfelt worship through music and song. New members always welcome to join!</p>
             </div>
             <div class="ministry-card">
+                <div class="ministry-icon">🤝</div>
                 <h3>Community Outreach</h3>
                 <p>Spreading hope and the good news through dedicated outreach, helping neighbors find strength and inspiration in the Word.</p>
             </div>
             <div class="ministry-card">
+                <div class="ministry-icon">📚</div>
                 <h3>Home Bible Study</h3>
                 <p>Connect with others in intimate Bible study and fellowship groups that meet throughout the week in various locations.</p>
             </div>
@@ -213,7 +244,7 @@
                     <a 
                             href="https://wa.me/254727907113?text=Hello%20Pastor%2C%20I%20visited%20the%20church%20website%20and%20would%20like%20to%20get%20in%20touch."
                             class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-                            Chat on WhatsApp
+                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                         </a>
                 </div>
 
@@ -221,20 +252,32 @@
                 <div class="contact-info-section">
                     <h3>Church Information</h3>
                     <div class="contact-item">
-                        <strong>Address:</strong>
-                        <span>Lalwet, Nakuru<br>Kenya</span>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Address:</strong>
+                            <span>Lalwet, Nakuru<br>Kenya</span>
+                        </div>
                     </div>
                     <div class="contact-item">
-                        <strong>Phone:</strong>
-                        <span>+254-727-907-113</span>
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Phone:</strong>
+                            <span>+254-727-907-113</span>
+                        </div>
                     </div>
                     <div class="contact-item">
-                        <strong>Email:</strong>
-                        <span>lalwetagc@gmail.com</span>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email:</strong>
+                            <span>lalwetagc@gmail.com</span>
+                        </div>
                     </div>
                     <div class="contact-item">
-                        <strong>Church Hours:</strong>
-                        <span>Sunday: 8:00 AM - 1:00 PM<br>Thursday: 4:00 PM - 6:00 PM</span>
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Church Hours:</strong>
+                            <span>Sunday: 8:00 AM - 1:00 PM<br>Thursday: 4:00 PM - 6:00 PM</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,16 +311,14 @@
         <div class="footer-bottom">
             <p>&copy; 2025 AFRICA GOSPEL CHURCH-LALWET. All rights reserved.</p>
             <details class="footer-about-toggle">
-                
                 <summary>About</summary>
                 <div class="footer-about">
                     <h4>About the Builder</h4>
-                    <p>Ezra Kipngetich — web designer and member of Africa Gospel Church Lalwet. Passionate about community, faith, and building accessible, easy-to-use websites that serve local needs.</p>
+                    <p>Ezra Kipngetich – web designer and member of Africa Gospel Church Lalwet. Passionate about community, faith, and building accessible, easy-to-use websites that serve local needs.</p>
                 </div>
             </details>
         </div>
     </footer>
     <script src="script.js" defer></script>
 </body>
-
 </html>
