@@ -24,11 +24,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Sync Cloudinary gallery
+        continue-on-error: true
         run: |
-          curl -s "https://api.cloudinary.com/v1_1/jhx7umny/resources/image?max_results=500" \
+          curl -s "https://api.cloudinary.com/v1_1/jhx7umny/resources/image?max_results=500&prefix=church-website/" \
             -u "${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET }}" > _cloudinary.json
           jq -c '[.resources // [] | .[].public_id] // []' _cloudinary.json > gallery.json
-          rm _cloudinary.json
+          rm -f _cloudinary.json
+          test -s gallery.json || echo '[]' > gallery.json
 
       - name: Inject YouTube API key
         run: |
