@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta name="author" content="Ezra Kipngetich">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This website enables information sharing for A.G.C. Lalwet">
+    <meta name="description" content="Lalwet A.G.C. Spreading the Gospel to all nations">
     <title>AFRICA GOSPEL CHURCH-LALWET</title>
     <link rel="icon" href="Gallery/AGC-logo-1-2.png" type="image/x-icon">
     <link rel="stylesheet" href="main.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pbVj3Y6q0bYl0Ykz6q3Gq8XQm9z2I1k9Qf0e6b1J7l3Pq9Kf4V6Y5q3V7s1Z8p2H3l0Yz6q3Gq8XQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Floating Elements Background -->
-    <div class="floating-shapes" aria-hidden="true">
-        <div class="shape shape-1"></div>
-        <div class="shape shape-2"></div>
-        <div class="shape shape-3"></div>
-        <div class="shape shape-4"></div>
-    </div>
 
-    <header>
-        <nav>
-            <img src="Gallery/AGC-logo-1-2.png" alt="AGC logo" loading="eager" width="120" height="80" decoding="async">
-            <div class="logo">AFRICA GOSPEL CHURCH-LALWET</div>
-            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-                <span class="hamburger"></span>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="brand">
+                <img src="Gallery/AGC-logo-1-2.png" alt="AGC Lalwet Logo" class="logo-img">
+                <span class="logo-text">AGC LALWET</span>
+            </div>
+
+            <button type="button" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#ministries">Ministries</a></li>
-                <li><a href="#events">Events</a></li>
-                <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+
+            <nav class="main-nav" id="mainNav">
+                <button type="button" class="menu-close" aria-label="Close menu">&times;</button>
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#ministries">Ministries</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <section id="home" class="hero">
@@ -50,57 +52,20 @@
         </div>
     </section>
 
-    <section id="gallery" class="container gallery-section">
-        <h2 class="section-title">Gallery</h2>
-        <div class="gallery-slideshow" aria-hidden="false">
-            <div class="slideshow-track" aria-live="off"></div>
-            <button class="slideshow-prev" aria-label="Previous slide">‹</button>
-            <button class="slideshow-next" aria-label="Next slide">›</button>
-        </div>
-
-        <div class="gallery-grid">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0018.jpg" alt="Church gathering" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0019.jpg" alt="Community event" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0021.jpg" alt="Worship service" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0022.jpg" alt="Church activity" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0072.jpg" alt="Fellowship moment" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0073.jpg" alt="Church celebration" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0089.jpg" alt="Spiritual gathering" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0096.jpg" alt="Community service" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0106.jpg" alt="Prayer time" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0109.jpg" alt="Church members" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0114.jpg" alt="Worship moment" loading="lazy" width="300" height="300" decoding="async">
-            <img class="gallery-item" src="Gallery/IMG-20260209-WA0115.jpg" alt="Fellowship gathering" loading="lazy" width="300" height="300" decoding="async">
-        </div>
-
-        <!-- Lightbox modal -->
-        <div id="lightbox" class="lightbox" aria-hidden="true">
-            <button class="lightbox-close" aria-label="Close">✕</button>
-            <button class="lightbox-prev" aria-label="Previous">‹</button>
-            <div class="lightbox-content">
-                <img src="" alt="" class="lightbox-image">
-            </div>
-            <button class="lightbox-next" aria-label="Next">›</button>
-        </div>
-    </section>
-
     <section class="services-times">
         <h2 class="section-title">Service Times</h2>
         <div class="times-grid">
             <div class="time-card">
-                <div class="time-icon">🌅</div>
                 <h3>Sunday Morning</h3>
                 <p>8:00 AM - Bible Study</p>
                 <p>10:00 AM - Main Service</p>
             </div>
             <div class="time-card">
-                <div class="time-icon">📖</div>
                 <h3>Thursday Fellowship</h3>
                 <p>4:00 PM - Bible Study</p>
                 <p>All are welcome</p>
             </div>
             <div class="time-card">
-                <div class="time-icon">🙌</div>
                 <h3>Saturday Youth</h3>
                 <p>3:00 PM - Youth Fellowship</p>
                 <p>Let us come together and Praise the Lord</p>
@@ -112,12 +77,12 @@
         <h2 class="section-title">About Us</h2>
         <div class="about-section">
             <div class="about-image">
-                 <img src="Gallery/Church-image.jpg" alt="Africa Gospel Church Lalwet" loading="lazy" width="1200" height="450" decoding="async">
+                <img src="Gallery/Church-image.jpg" alt="Africa Gospel Church Lalwet" loading="lazy" width="1200" height="450" decoding="async">
             </div>
             <div class="about-text">
                 <h3>Our Heritage</h3>
                 <p>Our heritage is defined by a continuous commitment to biblical teaching and community service. Over years, we have empowered our members to live out their God-given potential through prayer, fellowship, and practical biblical teaching, shaping not just our congregation but the wider community around us.</p>
-                
+
                 <h3>Our Core Values</h3>
                 <p>We are guided by principles of:</p>
                 <div class="core-values-grid">
@@ -137,22 +102,19 @@
 
     <section class="vision-mission container">
         <h2 class="section-title">Our Vision & Mission</h2>
-        
+
         <div class="vision-box">
-            <div class="vision-icon">👁️</div>
             <h3>Our Vision</h3>
             <p>The Whole Church taking the Whole Gospel to the Whole World.</p>
-            <p class="swahili">(KANISA LOTE, likieneza INJILI YOTE, ULIMWENGUNI KOTE)</p>
+            <p><span lang="sw" class="swahili">(KANISA LOTE, likieneza INJILI YOTE, ULIMWENGUNI KOTE)</span></p>
         </div>
 
         <div class="mission-box">
-            <div class="mission-icon">🎯</div>
             <h3>Mission</h3>
             <p>The purpose of the Africa Gospel Church is to fulfill the Great Commandment and Great Commission of the Lord Jesus Christ according to the Great Plan.</p>
         </div>
 
         <div class="strategies-box">
-            <div class="strategies-icon">⭐</div>
             <h3>Our Five Strategies</h3>
             <ul class="strategies-list">
                 <li><strong>E1:</strong> Evangelizing the Unsaved</li>
@@ -168,44 +130,36 @@
         <h2 class="section-title">Our Ministries</h2>
         <div class="ministries-grid">
             <div class="ministry-card">
-                <div class="ministry-icon">👶</div>
                 <h3>Children's Ministry</h3>
                 <p>Nurturing faith in our youngest members through engaging lessons, activities, and loving care. Available during all Sunday services.</p>
             </div>
             <div class="ministry-card">
-                <div class="ministry-icon">🌟</div>
                 <h3>Youth Ministry</h3>
                 <p>Empowering the next generation by providing a safe and exciting space for spiritual growth, where strong bonds are formed through mentorship and God's Word.</p>
             </div>
             <div class="ministry-card">
-                <div class="ministry-icon">💝</div>
                 <h3>Women's Ministry</h3>
                 <p>A community dedicated to equipping women to reach their full potential, emphasizing spiritual support, shared faith, and practical application of scripture.</p>
             </div>
             <div class="ministry-card">
-                <div class="ministry-icon">🎵</div>
                 <h3>Worship Team</h3>
                 <p>Leading our congregation in heartfelt worship through music and song. New members always welcome to join!</p>
             </div>
             <div class="ministry-card">
-                <div class="ministry-icon">🤝</div>
                 <h3>Community Outreach</h3>
                 <p>Spreading hope and the good news through dedicated outreach, helping neighbors find strength and inspiration in the Word.</p>
             </div>
             <div class="ministry-card">
-                <div class="ministry-icon">📚</div>
                 <h3>Home Bible Study</h3>
                 <p>Connect with others in intimate Bible study and fellowship groups that meet throughout the week in various locations.</p>
             </div>
         </div>
     </section>
 
-    <!-- Upcoming Events & Livestreams -->
     <section id="events" class="events-section container">
-        <h2 class="section-title">Upcoming Events &amp; Livestreams</h2>
+        <h2 class="section-title">Upcoming Events & Livestreams</h2>
         <div class="events-layout">
             <div class="events-grid" aria-live="polite">
-                <!-- Event cards will be injected here by script.js -->
             </div>
 
             <aside class="events-sidebar">
@@ -215,9 +169,42 @@
                 </div>
 
                 <div class="livestreams-grid" aria-label="Livestream platforms">
-                    <!-- Platform cards injected by script.js -->
                 </div>
             </aside>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section container">
+        <h2 class="section-title">Gallery</h2>
+
+        <div class="gallery-slideshow" tabindex="0">
+            <div class="slideshow-track"></div>
+            <button type="button" class="slideshow-prev" aria-label="Previous image">&lsaquo;</button>
+            <button type="button" class="slideshow-next" aria-label="Next image">&rsaquo;</button>
+        </div>
+
+        <div class="gallery-grid">
+            <img src="Gallery/IMG-20260209-WA0018.jpg" alt="Church gathering" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0019.jpg" alt="Church service" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0021.jpg" alt="Church event" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0022.jpg" alt="Church activity" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0072.jpg" alt="Church fellowship" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0073.jpg" alt="Church worship" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0089.jpg" alt="Church community" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0096.jpg" alt="Church ministry" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0106.jpg" alt="Church celebration" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0109.jpg" alt="Church program" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0114.jpg" alt="Church outreach" class="gallery-item" loading="lazy">
+            <img src="Gallery/IMG-20260209-WA0115.jpg" alt="Church group" class="gallery-item" loading="lazy">
+        </div>
+
+        <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+            <div class="lightbox-content">
+                <img class="lightbox-image" src="" alt="">
+                <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+                <button type="button" class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+                <button type="button" class="lightbox-next" aria-label="Next">&rsaquo;</button>
+            </div>
         </div>
     </section>
 
@@ -225,30 +212,26 @@
         <div class="container">
             <h2 class="section-title">Contact Us</h2>
             <div class="contact-grid">
-                <!-- WhatsApp Section -->
                 <div class="whatsapp-section">
                     <h3>Contact us through WhatsApp</h3>
                     <p class="whatsapp-intro">Scan the QR code or tap the button below to chat instantly.</p>
-                    
-                    <!-- QR CODE (WhatsApp with Pre-filled Message) -->
-                        <a href="https://wa.me/254727907113?text=Hello%20Pastor%2C%20I%20visited%20the%20church%20website%20and%20would%20like%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">
-                          <img 
-                              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fwa.me%2F254727907113%3Ftext%3DHello%2520Pastor%252C%2520I%2520visited%2520the%2520church%2520website%2520and%2520would%2520like%2520to%2520get%2520in%2520touch." 
-                              alt="WhatsApp QR Code"
-                              class="qr-code"
-                              loading="lazy"
-                              width="220" height="220" decoding="async">
-                        </a>
-                    
-                    <!-- WhatsApp Button -->
-                    <a 
-                            href="https://wa.me/254727907113?text=Hello%20Pastor%2C%20I%20visited%20the%20church%20website%20and%20would%20like%20to%20get%20in%20touch."
-                            class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-                        </a>
+
+                    <a href="https://wa.me/254727907113?text=Hello%20Pastor%2C%20I%20visited%20the%20church%20website%20and%20would%20like%20to%20get%20in%20touch." target="_blank" rel="noopener noreferrer">
+                        <img
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fwa.me%2F254727907113%3Ftext%3DHello%2520Pastor%252C%2520I%2520visited%2520the%2520church%2520website%2520and%2520would%2520like%2520to%2520get%2520in%2520touch."
+                            alt="WhatsApp QR Code"
+                            class="qr-code"
+                            loading="lazy"
+                            width="220" height="220" decoding="async">
+                    </a>
+
+                    <a
+                        href="https://wa.me/254727907113?text=Hello%20Pastor%2C%20I%20visited%20the%20church%20website%20and%20would%20like%20to%20get%20in%20touch."
+                        class="whatsapp-btn" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
                 </div>
 
-                <!-- Contact Info Section -->
                 <div class="contact-info-section">
                     <h3>Church Information</h3>
                     <div class="contact-item">
@@ -314,7 +297,7 @@
                 <summary>About</summary>
                 <div class="footer-about">
                     <h4>About the Builder</h4>
-                    <p>Ezra Kipngetich – web designer and member of Africa Gospel Church Lalwet. Passionate about community, faith, and building accessible, easy-to-use websites that serve local needs.</p>
+                    <p>Ezra Kipngetich -- web designer and member of Africa Gospel Church Lalwet. Passionate about community, faith, and building accessible, easy-to-use websites that serve local needs.</p>
                 </div>
             </details>
         </div>
