@@ -46,6 +46,14 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMenu();
       }
     });
+
+    document.addEventListener('click', (e) => {
+      if (nav.classList.contains('open') &&
+          !nav.contains(e.target) &&
+          !navToggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
