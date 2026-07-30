@@ -252,8 +252,11 @@ body {
     }
 
     .nav-list a {
+        display: flex;
+        align-items: center;
         font-size: 1rem;
         padding: 0.5rem 1rem;
+        min-height: 44px;
         color: rgba(255, 255, 255, 0.9);
     }
 
