@@ -1,3 +1,15 @@
+const CLOUD_NAME = 'jhx7umny';
+const UPLOAD_PRESET = 'church_uploads';
+const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY';
+const YOUTUBE_CHANNEL_ID = 'UCJj7Z2scFVD5eIXB5k2Rl_A';
+const HERO_IMAGE_ID = 'church-hero';
+const ABOUT_IMAGE_ID = 'church-about';
+const GALLERY_IMAGE_IDS = [];
+
+function cloudinaryUrl(publicId) {
+  return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/${publicId}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const nav = document.querySelector('.main-nav');
@@ -83,6 +95,32 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach(s => observer.observe(s));
   }
 
+  if (CLOUD_NAME !== 'YOUR_CLOUD_NAME') {
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      hero.style.backgroundImage = `linear-gradient(135deg, rgba(128, 0, 32, 0.85) 0%, rgba(74, 21, 128, 0.85) 100%), url(${cloudinaryUrl(HERO_IMAGE_ID)})`;
+    }
+    const aboutImg = document.getElementById('aboutImage');
+    if (aboutImg) {
+      aboutImg.src = cloudinaryUrl(ABOUT_IMAGE_ID);
+    }
+  }
+
+  const galleryGrid = document.getElementById('galleryGrid');
+  if (galleryGrid && GALLERY_IMAGE_IDS.length > 0) {
+    GALLERY_IMAGE_IDS.forEach((id, i) => {
+      const img = document.createElement('img');
+      img.src = cloudinaryUrl(id);
+      img.alt = 'Church gallery image';
+      img.className = 'gallery-item';
+      img.loading = 'lazy';
+      img.setAttribute('tabindex', '0');
+      galleryGrid.appendChild(img);
+    });
+  } else if (galleryGrid) {
+    galleryGrid.innerHTML = '<p class="text-muted" style="grid-column:1/-1;text-align:center;padding:4rem;">Gallery coming soon. Upload images using the media portal.</p>';
+  }
+
   const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.querySelector('.lightbox-image');
@@ -129,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
         openLightbox(i);
       }
     });
-    el.setAttribute('tabindex', '0');
   });
 
   if (btnClose) btnClose.addEventListener('click', closeLightbox);
@@ -191,29 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('\n');
   }
 
-  const platforms = [
-    { id: 'youtube', name: 'YouTube', url: 'https://www.youtube.com/channel/UCJj7Z2scFVD5eIXB5k2Rl_A', color: '#FF0000', desc: 'Watch sermons and live prayer meetings.', svg: '<svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="#FF0000" d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1-3-.2-7.5-.2-7.5-.2h-.1s-4.5 0-7.5.2c-.4 0-1.4.1-2.1 1C.7 4.5.5 6.2.5 6.2S.2 8 .2 9.8v.4c0 1.8.3 3.6.3 3.6s.2 1.7.8 2.4c.8.9 1.8.9 2.3 1 1.7.1 7.3.2 7.3.2s4.5 0 7.5-.2c.4 0 1.4-.1 2.1-1 .6-.7.8-2.4.8-2.4s.3-1.8.3-3.6v-.4c0-1.8-.3-3.6-.3-3.6z"/><path fill="#fff" d="M9.8 15.6V8.4l6.7 3.6-6.7 3.6z"/></svg>'},
-    { id: 'facebook', name: 'Facebook', url: 'https://www.facebook.com/share/g/1ACSrjV1yt/', color: '#1877F2', desc: 'Live updates and community events.', svg: '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="#1877F2" d="M22 12a10 10 0 10-11.5 9.9v-7H8.9v-2.9h1.6V9.1c0-1.6 1-2.5 2.4-2.5.7 0 1.4.1 1.4.1v1.6h-.8c-.8 0-1 .5-1 1v1.2h1.7l-.3 2.9h-1.4v7A10 10 0 0022 12z"/></svg>' }
-  ];
-
-  const livestreamsGrid = document.querySelector('.livestreams-grid');
-  if (livestreamsGrid) {
-    livestreamsGrid.innerHTML = platforms.map(p => {
-      return `
-        <div class="platform-card" data-platform="${p.id}">
-          <div class="platform-icon" aria-hidden="true">${p.svg}</div>
-          <div class="platform-meta">
-            <h4>${p.name}</h4>
-            <p>${p.desc}</p>
-          </div>
-          <div class="platform-actions">
-            <a class="btn-join" href="${p.url}" target="_blank" rel="noopener noreferrer">Watch Live</a>
-          </div>
-        </div>
-      `;
-    }).join('\n');
-  }
-
   (function setupGallerySlideshow() {
     const track = document.querySelector('.slideshow-track');
     const thumbEls = Array.from(document.querySelectorAll('.gallery-grid .gallery-item'));
@@ -268,4 +282,62 @@ document.addEventListener('DOMContentLoaded', () => {
       deltaX = 0; start();
     });
   })();
+
+  if (YOUTUBE_API_KEY !== 'YOUR_YOUTUBE_API_KEY') {
+    fetchYouTubeContent();
+  }
+
+  async function fetchYouTubeContent() {
+    const baseUrl = 'https://www.googleapis.com/youtube/v3';
+
+    try {
+      const [liveRes, uploadsRes] = await Promise.all([
+        fetch(`${baseUrl}/search?channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&eventType=live&key=${YOUTUBE_API_KEY}`),
+        fetch(`${baseUrl}/search?channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&order=date&maxResults=10&key=${YOUTUBE_API_KEY}`)
+      ]);
+
+      const liveData = await liveRes.json();
+      const uploadsData = await uploadsRes.json();
+      const isLive = liveData.items && liveData.items.length > 0;
+
+      if (isLive) {
+        const liveVideo = liveData.items[0];
+        const liveContainer = document.getElementById('live-now-container');
+        const livePlayer = document.getElementById('live-player');
+        if (liveContainer && livePlayer) {
+          liveContainer.style.display = 'block';
+          livePlayer.src = `https://www.youtube.com/embed/${liveVideo.id.videoId}?autoplay=1`;
+        }
+      }
+
+      const sundayVideos = (uploadsData.items || []).filter(item => {
+        const d = new Date(item.snippet.publishedAt);
+        return d.getDay() === 0;
+      }).slice(0, 2);
+
+      const container = document.getElementById('sunday-services');
+      if (container) {
+        if (sundayVideos.length === 0) {
+          container.innerHTML = '<p class="text-muted">No recent services found. Check back after Sunday.</p>';
+        } else {
+          container.innerHTML = sundayVideos.map(video => `
+            <div class="sermon-card">
+              <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/${video.id.videoId}" allow="encrypted-media" allowfullscreen loading="lazy"></iframe>
+              </div>
+              <div class="sermon-info">
+                <h3>${video.snippet.title}</h3>
+                <p>${new Date(video.snippet.publishedAt).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</p>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+    } catch (err) {
+      const container = document.getElementById('sunday-services');
+      if (container) {
+        container.innerHTML = '<p class="text-muted">Unable to load videos at this time.</p>';
+      }
+    }
+  }
 });

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+RED='\033[0;31m'
+NC='\033[0m'
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM)
+
+if [ -z "$FILES" ]; then
+  exit 0
+fi
+
+BLOCKED_PATTERNS='AIzaSy[0-9A-Za-z_-]{33}|AKIA[0-9A-Z]{16}|sk-[0-9a-zA-Z]{32,}|ghp_[0-9a-zA-Z]{36}|gho_[0-9a-zA-Z]{36}|ghu_[0-9a-zA-Z]{36}|ghs_[0-9a-zA-Z]{36}|ghr_[0-9a-zA-Z]{36}|-----BEGIN (RSA|OPENSSH|DSA|EC|PGP) PRIVATE KEY-----'
+
+PATTERN_MATCH=$(echo "$FILES" | xargs -I{} sh -c 'git show ":$1" 2>/dev/null' _ {} | grep -Eo "$BLOCKED_PATTERNS" | head -5)
+
+if [ -n "$PATTERN_MATCH" ]; then
+  printf "\n${RED}BLOCKED: Potential secrets detected in staged files:${NC}\n"
+  echo "$PATTERN_MATCH" | sed 's/^/  /'
+  printf "\n${RED}Commit aborted. Remove the secrets before committing.${NC}\n"
+  printf "If this is a false positive, update .githooks/pre-commit.\n\n"
+  exit 1
+fi
+
+exit 0

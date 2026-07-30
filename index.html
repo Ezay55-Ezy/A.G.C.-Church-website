@@ -33,6 +33,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#ministries">Ministries</a></li>
                     <li><a href="#events">Events</a></li>
+                    <li><a href="#sermons">Sermons</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -77,7 +78,7 @@
         <h2 class="section-title">About Us</h2>
         <div class="about-section">
             <div class="about-image">
-                <img src="Gallery/Church-image.jpg" alt="Africa Gospel Church Lalwet" loading="lazy" width="1200" height="450" decoding="async">
+                <img src="" alt="Africa Gospel Church Lalwet" class="about-img" id="aboutImage" loading="lazy" width="1200" height="450" decoding="async">
             </div>
             <div class="about-text">
                 <h3>Our Heritage</h3>
@@ -157,20 +158,24 @@
     </section>
 
     <section id="events" class="events-section container">
-        <h2 class="section-title">Upcoming Events & Livestreams</h2>
+        <h2 class="section-title">Upcoming Events</h2>
         <div class="events-layout">
             <div class="events-grid" aria-live="polite">
             </div>
+        </div>
+    </section>
 
-            <aside class="events-sidebar">
-                <div class="live-intro">
-                    <h3>Join Our Live Streams</h3>
-                    <p>Follow our channels for sermons, prayer meetings, and updates.</p>
-                </div>
-
-                <div class="livestreams-grid" aria-label="Livestream platforms">
-                </div>
-            </aside>
+    <section id="sermons" class="sermons-section container">
+        <h2 class="section-title">Latest Sermons</h2>
+        <div id="live-now-container" class="live-now-container" style="display:none;">
+            <div class="live-badge">LIVE</div>
+            <h3 class="live-title">Live Stream</h3>
+            <div class="video-wrapper">
+                <iframe id="live-player" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+        <div id="sunday-services" class="sermons-grid">
+            <p class="text-muted">Loading latest services...</p>
         </div>
     </section>
 
@@ -183,19 +188,7 @@
             <button type="button" class="slideshow-next" aria-label="Next image">&rsaquo;</button>
         </div>
 
-        <div class="gallery-grid">
-            <img src="Gallery/IMG-20260209-WA0018.jpg" alt="Church gathering" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0019.jpg" alt="Church service" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0021.jpg" alt="Church event" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0022.jpg" alt="Church activity" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0072.jpg" alt="Church fellowship" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0073.jpg" alt="Church worship" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0089.jpg" alt="Church community" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0096.jpg" alt="Church ministry" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0106.jpg" alt="Church celebration" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0109.jpg" alt="Church program" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0114.jpg" alt="Church outreach" class="gallery-item" loading="lazy">
-            <img src="Gallery/IMG-20260209-WA0115.jpg" alt="Church group" class="gallery-item" loading="lazy">
+        <div class="gallery-grid" id="galleryGrid">
         </div>
 
         <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
