@@ -283,18 +283,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  if (YOUTUBE_API_KEY !== 'YOUR_YOUTUBE_API_KEY') {
-    fetchYouTubeContent();
-  }
+  fetchYouTubeContent();
 
   async function fetchYouTubeContent() {
     const baseUrl = 'https://www.googleapis.com/youtube/v3';
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000);
 
     try {
       const [liveRes, uploadsRes] = await Promise.all([
-        fetch(`${baseUrl}/search?channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&eventType=live&key=${YOUTUBE_API_KEY}`),
-        fetch(`${baseUrl}/search?channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&order=date&maxResults=10&key=${YOUTUBE_API_KEY}`)
+        fetch(`${baseUrl}/search?channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&eventType=live&key=${YOUTUBE_API_KEY}`, { signal: controller.signal }),
+        fetch(`${baseUrl}/search?channelId=${YOUTUBE_CHANNEL_ID}&part=snippet&type=video&order=date&maxResults=10&key=${YOUTUBE_API_KEY}`, { signal: controller.signal })
       ]);
+
+      clearTimeout(timeout);
 
       const liveData = await liveRes.json();
       const uploadsData = await uploadsRes.json();
