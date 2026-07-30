@@ -2,7 +2,7 @@ const CLOUD_NAME = 'jhx7umny';
 const UPLOAD_PRESET = 'church_uploads';
 const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY';
 const YOUTUBE_CHANNEL_ID = 'UCJj7Z2scFVD5eIXB5k2Rl_A';
-const HERO_IMAGE_ID = 'church-hero';
+const HERO_IMAGE_ID = 'jwvurr6gupvtyeumymam';
 const ABOUT_IMAGE_ID = 'church-about';
 
 function cloudinaryUrl(publicId) {
