@@ -4,7 +4,6 @@ const YOUTUBE_API_KEY = 'YOUR_YOUTUBE_API_KEY';
 const YOUTUBE_CHANNEL_ID = 'UCJj7Z2scFVD5eIXB5k2Rl_A';
 const HERO_IMAGE_ID = 'church-hero';
 const ABOUT_IMAGE_ID = 'church-about';
-const GALLERY_IMAGE_IDS = [];
 
 function cloudinaryUrl(publicId) {
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/f_auto,q_auto/${publicId}`;
@@ -106,85 +105,101 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const galleryGrid = document.getElementById('galleryGrid');
-  if (galleryGrid && GALLERY_IMAGE_IDS.length > 0) {
-    GALLERY_IMAGE_IDS.forEach((id, i) => {
-      const img = document.createElement('img');
-      img.src = cloudinaryUrl(id);
-      img.alt = 'Church gallery image';
-      img.className = 'gallery-item';
-      img.loading = 'lazy';
-      img.setAttribute('tabindex', '0');
-      galleryGrid.appendChild(img);
+  loadGallery();
+
+  async function loadGallery() {
+    const galleryGrid = document.getElementById('galleryGrid');
+    if (!galleryGrid) return;
+
+    let ids = [];
+    try {
+      const res = await fetch('/gallery.json');
+      if (res.ok) ids = await res.json();
+    } catch {}
+
+    if (ids.length > 0) {
+      ids.forEach((id) => {
+        const img = document.createElement('img');
+        img.src = cloudinaryUrl(id);
+        img.alt = '';
+        img.className = 'gallery-item';
+        img.loading = 'lazy';
+        img.setAttribute('tabindex', '0');
+        galleryGrid.appendChild(img);
+      });
+      initLightbox();
+      initSlideshow();
+    } else {
+      galleryGrid.innerHTML = '<p class="text-muted" style="grid-column:1/-1;text-align:center;padding:4rem;">Gallery coming soon. Upload images using the media portal.</p>';
+    }
+  }
+
+  function initLightbox() {
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.querySelector('.lightbox-image');
+    const btnClose = document.querySelector('.lightbox-close');
+    const btnNext = document.querySelector('.lightbox-next');
+    const btnPrev = document.querySelector('.lightbox-prev');
+    let currentIndex = -1;
+
+    function openLightbox(index) {
+      const img = galleryItems[index];
+      if (!img) return;
+      currentIndex = index;
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt || '';
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      if (btnClose) btnClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lightboxImage.src = '';
+      currentIndex = -1;
+    }
+
+    function showNext() {
+      if (currentIndex < 0) return;
+      const next = (currentIndex + 1) % galleryItems.length;
+      openLightbox(next);
+    }
+
+    function showPrev() {
+      if (currentIndex < 0) return;
+      const prev = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      openLightbox(prev);
+    }
+
+    galleryItems.forEach((el, i) => {
+      el.addEventListener('click', () => openLightbox(i));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
+          e.preventDefault();
+          openLightbox(i);
+        }
+      });
     });
-  } else if (galleryGrid) {
-    galleryGrid.innerHTML = '<p class="text-muted" style="grid-column:1/-1;text-align:center;padding:4rem;">Gallery coming soon. Upload images using the media portal.</p>';
-  }
 
-  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.querySelector('.lightbox-image');
-  const btnClose = document.querySelector('.lightbox-close');
-  const btnNext = document.querySelector('.lightbox-next');
-  const btnPrev = document.querySelector('.lightbox-prev');
-  let currentIndex = -1;
+    if (btnClose) btnClose.addEventListener('click', closeLightbox);
+    if (btnNext) btnNext.addEventListener('click', showNext);
+    if (btnPrev) btnPrev.addEventListener('click', showPrev);
 
-  function openLightbox(index) {
-    const img = galleryItems[index];
-    if (!img) return;
-    currentIndex = index;
-    lightboxImage.src = img.src;
-    lightboxImage.alt = img.alt || '';
-    lightbox.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    if (btnClose) btnClose.focus();
-  }
+    if (lightbox) {
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+    }
 
-  function closeLightbox() {
-    lightbox.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-    lightboxImage.src = '';
-    currentIndex = -1;
-  }
-
-  function showNext() {
-    if (currentIndex < 0) return;
-    const next = (currentIndex + 1) % galleryItems.length;
-    openLightbox(next);
-  }
-
-  function showPrev() {
-    if (currentIndex < 0) return;
-    const prev = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
-    openLightbox(prev);
-  }
-
-  galleryItems.forEach((el, i) => {
-    el.addEventListener('click', () => openLightbox(i));
-    el.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ' || e.code === 'Space') {
-        e.preventDefault();
-        openLightbox(i);
-      }
-    });
-  });
-
-  if (btnClose) btnClose.addEventListener('click', closeLightbox);
-  if (btnNext) btnNext.addEventListener('click', showNext);
-  if (btnPrev) btnPrev.addEventListener('click', showPrev);
-
-  if (lightbox) {
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox || lightbox.getAttribute('aria-hidden') === 'true') return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
     });
   }
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox || lightbox.getAttribute('aria-hidden') === 'true') return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') showNext();
-    if (e.key === 'ArrowLeft') showPrev();
-  });
 
   function getNextOccurrence(targetDay) {
     const now = new Date();
@@ -228,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }).join('\n');
   }
 
-  (function setupGallerySlideshow() {
+  function initSlideshow() {
     const track = document.querySelector('.slideshow-track');
     const thumbEls = Array.from(document.querySelectorAll('.gallery-grid .gallery-item'));
     const container = document.querySelector('.gallery-slideshow');
@@ -281,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (Math.abs(deltaX) > 40) { if (deltaX < 0) next(); else prev(); }
       deltaX = 0; start();
     });
-  })();
+  }
 
   fetchYouTubeContent();
 
