@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (CLOUD_NAME !== 'YOUR_CLOUD_NAME') {
     const hero = document.querySelector('.hero');
     if (hero) {
-      hero.style.backgroundImage = `linear-gradient(135deg, rgba(128, 0, 32, 0.85) 0%, rgba(74, 21, 128, 0.85) 100%), url(${cloudinaryUrl(HERO_IMAGE_ID)})`;
+      hero.style.backgroundImage = `linear-gradient(135deg, rgba(128, 0, 32, 0.80) 0%, rgba(74, 21, 128, 0.80) 100%), url(${cloudinaryUrl(HERO_IMAGE_ID)})`;
     }
     const aboutImg = document.getElementById('aboutImage');
     if (aboutImg) {
