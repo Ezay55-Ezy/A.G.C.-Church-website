@@ -25,7 +25,7 @@ jobs:
 
       - name: Sync Cloudinary gallery
         run: |
-          curl -s "https://api.cloudinary.com/v1_1/jhx7umny/resources/image?max_results=500" \
+          curl -s "https://api.cloudinary.com/v1_1/jhx7umny/resources/image?max_results=500&prefix=church-website/" \
             -u "${{ secrets.CLOUDINARY_API_KEY }}:${{ secrets.CLOUDINARY_API_SECRET }}" | \
             jq -c '[.resources[].public_id]' > gallery.json
 
